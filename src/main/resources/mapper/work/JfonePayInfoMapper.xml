@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfonePayInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfonePayInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pi_user_id" property="piUserId" jdbcType="INTEGER" />
+    <result column="pi_order_no" property="piOrderNo" jdbcType="BIGINT" />
+    <result column="pi_pay_platform" property="piPayPlatform" jdbcType="INTEGER" />
+    <result column="pi_platform_number" property="piPlatformNumber" jdbcType="VARCHAR" />
+    <result column="pi_platform_status" property="piPlatformStatus" jdbcType="VARCHAR" />
+    <result column="pi_create_time" property="piCreateTime" jdbcType="TIMESTAMP" />
+    <result column="pi_update_time" property="piUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

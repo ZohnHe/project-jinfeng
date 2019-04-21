@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.ext.JfoneInOutStorageInfoMapperExt" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.ext.JfoneInOutStorageInfoExt"
+             extends="com.jfone.mall.base.mapping.work.JfoneInOutStorageInfoMapper.BaseResultMap">
+  </resultMap>
+    <resultMap id="unBaseResultMap" type="com.jfone.mall.base.entity.work.ext.JfoneInOutStorageInfoExt"
+               extends="com.jfone.mall.base.mapping.work.JfoneInOutStorageInfoMapper.BaseResultMap">
+        <result column="c_address" property="cAddress" jdbcType="VARCHAR" />
+        <result column="c_description" property="cDescription" jdbcType="VARCHAR" />
+        <result column="c_operation" property="cOperation" jdbcType="VARCHAR" />
+        <result column="time" property="time" javaType="DATE" jdbcType="DATE" />
+        <!--<result column="goods_type" property="goodsType"/>-->
+   </resultMap>
+  <update id="delList" parameterType="int">
+      update jfone_in_out_storage_info set flag=0
+          <if test="ids != null and ids.length > 0">
+              WHERE id IN
+                  <foreach collection="ids" open="(" close=")" item="id" separator=",">
+                      #{id}
+                  </foreach>
+          </if>
+  </update>
+
+    <!--<update id="delList" parameterType="int">
+        update
+        jfone_in_out_storage_info
+        set
+          <if test="cAddress!=null">
+              c_address=#{cAddress},
+          </if>
+        <if test="cDescription!=null">
+            c_description=#{cDescription},
+        </if>
+        <if test="cOperation!=null">
+            c_operation=#{cOperation},
+        </if>
+        c_transit_info_id=#{cTransitInfoId}
+          where id=#{id}
+    </update>-->
+    <update id="modifyList" parameterType="com.jfone.mall.base.entity.work.ext.JfoneInOutStorageInfoExt">
+        update
+          jfone_in_out_storage_info
+        set
+          c_transit_info_id=#{cTransitInfoId},
+          c_address=#{cAddress},
+          c_description=#{cDescription},
+          c_operation=#{cOperation}
+        where
+          id=#{id}
+    </update>
+    <!--c_transit_info_id=#{cTransitInfoId}-->
+    <insert id="addId" parameterType="com.jfone.mall.base.entity.work.ext.JfoneInOutStorageInfoExt">
+        insert into
+          jfone_in_out_storage_info(
+          c_address,
+          c_description,
+          c_operation,
+           c_transit_info_id,
+          time
+          )
+          values (
+          #{cAddress},
+          #{cDescription},
+          #{cOperation},
+          #{cTransitInfoId},
+          now()
+          )
+    </insert>
+
+
+
+
+    <select id="moveSel" parameterType="com.jfone.mall.base.entity.work.ext.JfoneInOutStorageInfoExt" resultType="com.jfone.mall.base.entity.work.ext.JfoneInOutStorageInfoExt">
+        select c_address,time
+        from  jfone_in_out_storage_info
+        where c_transit_info_id=#{cTransitInfoId}
+    </select>
+</mapper>

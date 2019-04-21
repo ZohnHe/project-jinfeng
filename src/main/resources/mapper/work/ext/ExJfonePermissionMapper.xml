@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.ext.ExJfonePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.ext.ExJfonePermission"
+  extends="com.jfone.mall.base.mapping.work.JfonePermissionMapper.BaseResultMap">
+
+  </resultMap>
+
+  <select id="selectByRoleId" resultType="com.jfone.mall.base.entity.work.ext.ExJfonePermission">
+  SELECT p.id,p.p_description,p.`p_keyword`,p.`p_name`
+  FROM jfone_permission p INNER JOIN jfone_role_permission rp
+  ON p.id = rp.p_id INNER JOIN jfone_role r
+  ON rp.r_id=r.id WHERE
+  r.id=#{roleId}
+  </select>
+</mapper>

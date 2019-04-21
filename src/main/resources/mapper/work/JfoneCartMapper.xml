@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneCartMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneCart" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="c_user_id" property="cUserId" jdbcType="INTEGER" />
+    <result column="c_product_id" property="cProductId" jdbcType="INTEGER" />
+    <result column="c_quantity" property="cQuantity" jdbcType="INTEGER" />
+    <result column="c_checked" property="cChecked" jdbcType="INTEGER" />
+    <result column="c_create_time" property="cCreateTime" jdbcType="TIMESTAMP" />
+    <result column="c_update_time" property="cUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+</mapper>

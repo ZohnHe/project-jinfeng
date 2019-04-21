@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	">
+	
+
+	<!-- jedis的连接池 -->
+	 <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+        <property name="maxIdle" value="300" />        
+        <property name="maxWaitMillis" value="3000" />  
+        <property name="testOnBorrow" value="true" />  
+    </bean>  
+	 <!-- jedis的连接工厂 将jedis连接池注入 -->
+	<bean id="redisConnectionFactory"  
+        class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"  
+        p:host-name="localhost" p:port="6379" p:pool-config-ref="poolConfig"  
+        p:database="0" />  
+    <!--Spring data提供的redis模板 配置jedis的配置模板 -->    
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">  
+        <property name="connectionFactory" ref="redisConnectionFactory" /> 
+        <!-- key序列化对象 不去配置，指定的就是jdk对象序列化 -->
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <!-- value序列化对象 -->
+        <property name="valueSerializer">
+        	<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"> 
+        	</bean>
+        </property> 
+    </bean>  
+	
+	
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneProductMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneProduct" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="p_category_id" property="pCategoryId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_subtitle" property="pSubtitle" jdbcType="VARCHAR" />
+    <result column="p_main_image" property="pMainImage" jdbcType="VARCHAR" />
+    <result column="p_price" property="pPrice" jdbcType="DECIMAL" />
+    <result column="p_stock" property="pStock" jdbcType="INTEGER" />
+    <result column="p_status" property="pStatus" jdbcType="INTEGER" />
+    <result column="p_create_time" property="pCreateTime" jdbcType="TIMESTAMP" />
+    <result column="p_update_time" property="pUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="p_sub_images" property="pSubImages" jdbcType="LONGVARCHAR" />
+    <result column="p_detail" property="pDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneCoustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneCoustomer" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="c_username" property="cUsername" jdbcType="VARCHAR" />
+    <result column="c_password" property="cPassword" jdbcType="VARCHAR" />
+    <result column="c_nickname" property="cNickname" jdbcType="VARCHAR" />
+    <result column="c_email" property="cEmail" jdbcType="VARCHAR" />
+    <result column="c_question" property="cQuestion" jdbcType="VARCHAR" />
+    <result column="c_answer" property="cAnswer" jdbcType="VARCHAR" />
+    <result column="c_create_time" property="cCreateTime" jdbcType="DATE" />
+    <result column="c_update_time" property="cUpdateTime" jdbcType="DATE" />
+  </resultMap>
+
+
+  <select id="CoustomerSearch" resultMap="BaseResultMap">
+    select * from jfone_coustomer a WHERE c_status = 1
+    <where>
+      <if test="cUsername != null and cUsername.length() > 0">
+        and a.c_username like '%${cUsername}%'
+      </if>
+    </where>
+    <if test="orderStr != null and orderStr.length() > 0">
+      ${orderStr}
+    </if>
+  </select>
+
+  <select id="CoustomerFSearchUn" resultMap="BaseResultMap">
+
+    SELECT * FROM jfone_coustomer a WHERE c_status = 0
+    <if test="cUsername != null and cUsername.length() > 0">
+      and a.c_username like '%${cUsername}%'
+    </if>
+    <if test="orderStr != null and orderStr.length() > 0">
+      ${orderStr}
+    </if>
+  </select>
+
+  <delete id="coustomerDelete">
+    delete from jfone_coustomer
+    where id in
+    <foreach collection="coustomerIds" item="id" open="(" close=")" separator="," index="">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>

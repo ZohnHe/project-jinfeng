@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<!-- jQuery 3 -->
+<script src="/static/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/static/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="/static/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/static/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#order").click(function () {
+            //ajax去服务器端校验
+            var employee= {o_payment: 5288,o_postage: 0,o_user_id: 3,orderShippingId:6};
+            $.ajax({
+                type: 'POST',
+                url: "/order/create",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(employee),
+                dataType:'json',
+                success: function (data) {
+                    if (data.success == 0) {
+                        alert('添加订单失败');
+
+                    } else if(data.success == 1){
+
+
+                    }else{
+
+                    }
+                    alert('提交订单成功');
+                    window.location.href = "/static/success.html";
+                }
+            });
+        });
+
+    });
+
+
+</script>
+<body>
+<a id="order" href="#">提交</a>
+
+</body>
+</html>

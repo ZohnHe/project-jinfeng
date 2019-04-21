@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	 xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+
+		">
+	<import resource="classpath:spring-context-EhCache.xml"></import>
+	<!-- 配置Shiro的核心Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 安全管理器 -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 未认证，跳转到哪个页面 -->
+		<property name="loginUrl" value="/static/dengl.html" />
+		<!-- 登录页面 -->
+		<property name="successUrl" value="/static/success.html" />
+		<!-- 认证后，没有权限跳转页面 -->
+		<property name="unauthorizedUrl" value="/static/unauthorized.html" />
+		<!-- shiro URL控制过滤器规则 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/unauthorized.html = anon
+				/static/** = anon
+				/login/timeout = anon
+				/login/load = anon
+				/login = anon
+				/shop/list = anon
+				/goods/to_order = anon
+                /shopCart/addShopCart = anon
+				/shopCart/getList = anon
+				/shopCart/delete = anon
+				/tij_dingd = anon
+				/modifyAddress = anon
+				/modify = anon
+				/deleteAdderss = anon
+				/add = anon
+				/order/create = anon
+				/order/findList = anon
+				/order/findOrderItem = anon
+				/storage/moveSel = anon
+				/export = anon
+				/getbguser = anon
+				/bcklogin = anon
+
+				<!--/css/** = anon
+				/js/** = anon
+				/images/** = anon
+				/services/** = anon
+				/pages/base/courier.html* = perms[courier:list]
+				/pages/base/area.html* = roles[base]-->
+				/** = authc
+			</value>
+		</property>
+	</bean>
+
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="jfoneRealm"></property>
+		<!-- 配置缓存 -->
+		<property name="cacheManager" ref="shiroCacheManager"></property>
+	</bean>
+
+	<!-- 配置生命周期Bean后置处理器 可以自动来调用在Spring ioc容器中shiro bean的生命周期方法 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+
+	<!-- 开启shiro注解模式 -->
+
+	<!-- 基于spring传统的基于代理的开发模式 会在spring中使用shiro注解 ,但是要依赖生命周期bean -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor">
+		<!-- 开启直接代理实现类，因为接口代理之后，没有@RequiresPermissions注解 -->
+		<property name="proxyTargetClass" value="true"></property>
+	</bean>
+
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager"></property>
+
+	</bean>
+	<!-- 配置自定义realm -->
+	<bean id="jfoneRealm" class="com.jfone.mall.base.Realm.JfoneRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<property name="hashAlgorithmName" value="MD5"></property>
+				<property name="hashIterations" value="1024"></property>
+			</bean>
+		</property>
+		<property name="authorizationCacheName" value="jfone"></property>
+
+	</bean>
+	 
+</beans>

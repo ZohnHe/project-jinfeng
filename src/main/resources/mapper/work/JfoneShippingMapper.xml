@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneShippingMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneShipping" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="s_user_id" property="sUserId" jdbcType="INTEGER" />
+    <result column="s_receiver_name" property="sReceiverName" jdbcType="VARCHAR" />
+    <result column="s_receiver_phone" property="sReceiverPhone" jdbcType="VARCHAR" />
+    <result column="s_receiver_mobile" property="sReceiverMobile" jdbcType="VARCHAR" />
+    <result column="s_receiver_province" property="sReceiverProvince" jdbcType="VARCHAR" />
+    <result column="s_receiver_city" property="sReceiverCity" jdbcType="VARCHAR" />
+    <result column="s_receiver_district" property="sReceiverDistrict" jdbcType="VARCHAR" />
+    <result column="s_receiver_address" property="sReceiverAddress" jdbcType="VARCHAR" />
+    <result column="s_receiver_zip" property="sReceiverZip" jdbcType="VARCHAR" />
+    <result column="s_create_time" property="sCreateTime" jdbcType="TIMESTAMP" />
+    <result column="s_update_time" property="sUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

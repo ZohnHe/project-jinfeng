@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneInOutStorageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneInOutStorageInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="c_address" property="cAddress" jdbcType="VARCHAR" />
+    <result column="c_description" property="cDescription" jdbcType="VARCHAR" />
+    <result column="c_operation" property="cOperation" jdbcType="VARCHAR" />
+    <result column="c_transit_info_id" property="cTransitInfoId" jdbcType="INTEGER" />
+    <result column="c_in_out_index" property="cInOutIndex" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

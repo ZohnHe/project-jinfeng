@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneOrderItemMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneOrderItem" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="oi_user_id" property="oiUserId" jdbcType="INTEGER" />
+    <result column="oi_order_no" property="oiOrderNo" jdbcType="BIGINT" />
+    <result column="oi_product_id" property="oiProductId" jdbcType="INTEGER" />
+    <result column="oi_product_name" property="oiProductName" jdbcType="VARCHAR" />
+    <result column="oi_product_image" property="oiProductImage" jdbcType="VARCHAR" />
+    <result column="oi_current_unit_price" property="oiCurrentUnitPrice" jdbcType="DECIMAL" />
+    <result column="oi_quantity" property="oiQuantity" jdbcType="INTEGER" />
+    <result column="oi_total_price" property="oiTotalPrice" jdbcType="DECIMAL" />
+    <result column="oi_create_time" property="oiCreateTime" jdbcType="TIMESTAMP" />
+    <result column="oi_update_time" property="oiUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneUserMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneUser" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="u_username" property="uUsername" jdbcType="VARCHAR" />
+    <result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+    <result column="u_nickname" property="uNickname" jdbcType="VARCHAR" />
+    <result column="u_email" property="uEmail" jdbcType="VARCHAR" />
+    <result column="u_phone" property="uPhone" jdbcType="VARCHAR" />
+    <result column="u_question" property="uQuestion" jdbcType="VARCHAR" />
+    <result column="u_answer" property="uAnswer" jdbcType="VARCHAR" />
+    <result column="u_roleid" property="uRoleid" jdbcType="INTEGER" />
+    <result column="u_create_time" property="uCreateTime" jdbcType="DATE" />
+    <result column="u_update_time" property="uUpdateTime" jdbcType="DATE" />
+  </resultMap>
+</mapper>

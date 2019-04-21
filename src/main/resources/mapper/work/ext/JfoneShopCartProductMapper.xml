@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.ext.JfoneShopCartProductMapper" >
+
+    <resultMap id="UnBaseResultMap" type="com.jfone.mall.base.entity.work.ext.JfoneShopCartProduct"
+               extends="com.jfone.mall.base.mapping.work.JfoneCartMapper.BaseResultMap"
+             >
+<!--
+        extends="com.jfone.mall.base.mapping.work.JfoneCartMapper.BaseResultMap"
+-->
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="p_category_id" property="pCategoryId" jdbcType="INTEGER" />
+        <result column="p_name" property="pName" jdbcType="VARCHAR" />
+        <result column="p_subtitle" property="pSubtitle" jdbcType="VARCHAR" />
+        <result column="p_main_image" property="pMainImage" jdbcType="VARCHAR" />
+        <result column="p_price" property="pPrice" jdbcType="DECIMAL" />
+        <result column="p_stock" property="pStock" jdbcType="INTEGER" />
+        <result column="p_sub_images" property="pSubImages" jdbcType="LONGVARCHAR" />
+        <result column="p_detail" property="pDetail" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+
+    <select id="selectShopCartByUserId" resultMap="UnBaseResultMap">
+    select a.*,b.* FROM jfone_cart a ,jfone_product b
+      where a.c_user_id = #{cUserId} and a.c_product_id = b.id
+  </select>
+</mapper>

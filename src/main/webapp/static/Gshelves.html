@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Starter</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="../assets/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/AdminLTE/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../assets/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/AdminLTE/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="../assets/AdminLTE/dist/css/skins/skin-blue.min.css">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../assets/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../assets/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/AdminLTE/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../assets/AdminLTE/dist/css/skins/_all-skins.min.css">
+    <!-- dropzone.css -->
+  <link rel="stylesheet" href="/static/dropzone/dropzone.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <script  type="text/javascript"  src="/static/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="/static/adminlte/js/common/houtaiyonghu.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+
+            $.ajax({
+                type: "POST",
+                url: "/getbguser",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if(data.status == "500"){
+                        alert(data.msg);
+                        return
+                    }else {
+                        alert(data.user)
+                    }
+                },
+                error: function (message) {
+                    $("#request-process-patent").html("提交数据失败！");
+                }
+            });
+        })
+    </script>
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>A</b>LT</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>金丰商城</b>后台</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+
+          <!-- User Account Menu -->
+            <li class="dropdown user user-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <!-- The user image in the navbar-->
+                    <img src="../assets/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                    <span class="hidden-xs" id="user">Alexander Pierce</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- The user image in the menu -->
+                    <li class="user-header">
+                        <img src="../assets/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                        <p>
+                            金丰商城
+                            <small>Member since Nov. 2019</small>
+                        </p>
+                    </li>
+                    <!-- Menu Body -->
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-default btn-flat" id="out">退出</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <!--<div class="user-panel">
+        <div class="pull-left image">
+          <img src="../assets/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          &lt;!&ndash; Status &ndash;&gt;
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>-->
+
+      <!-- search form (Optional) -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">HEADER</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li class="active" id="pi_1">
+          <a href="#"><i class="fa fa-link"></i> <span>个人信息</span></a>
+        </li>
+        <li class="treeview" >
+          <a href="#"><i class="fa fa-link" ></i> <span>商品管理</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li id="pi_2"><a href="/static/Gshelves.html">已上架商品</a></li>
+            <li id="pi_3"><a href="/static/GFshelves.html">已下架商品</a></li>
+          </ul>
+        </li>
+        <li class="treeview" >
+          <a href="#"><i class="fa fa-link" ></i> <span>用户管理</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li id="pi_4"><a href="/static/Coustomer.html">用户信息</a></li>
+            <li id="pi_5"><a href="/static/CoustomerF.html">已冻结用户信息</a></li>
+          </ul>
+        </li>
+        <li><a href="manage.html"><i class="fa fa-link"></i> <span>配送管理</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>导出订单报表</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/export">导出订单报表</a></li>
+            <li><a href="#">导入订单报表</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!--上架商品信息-->
+    <section class="content-header">
+      <h1>
+        金丰商城
+        <small>@author mumu</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 金丰一号</a></li>
+        <li><a href="#">商品管理</a></li>
+        <li class="active">金丰速运</li>
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">商品上架管理</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>商品ID</th>
+                  <th>商品名称</th>
+                  <th>商品价格</th>
+                  <th>商品库存</th>
+                  <th>商品描述</th>
+                  <th>商品状态</th>
+                </tr>
+                </thead>
+
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+
+
+
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="pull-right-container">
+                    <span class="label label-danger pull-right">70%</span>
+                  </span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="../assets/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+<!--<script src='../resources/js/index.js'></script>-->
+<script src="/static/dropzone/dropzone.js"></script>
+
+<script src="/static/dropzone/jquery-1.10.1.min.js"></script>
+<script src="/static/resources/wangEditor.js"></script>
+<!-- DataTables -->
+<script src="../assets/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../assets/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+
+<!-- FastClick -->
+<script src="../assets/AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
+
+<!-- Bootstrap 3.3.7 -->
+<script src="../assets/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../assets/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../assets/AdminLTE/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../assets/AdminLTE/dist/js/demo.js"></script>
+<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.8.0/jquery.serializejson.min.js"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+<!-- page script -->
+<script>
+    $(function () {
+        //提示信息
+        var lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+        //初始化表格
+        var table = $("#example1").dataTable({
+
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    text: '删除',
+                    action: function ( e, dt, node, config ) {
+                        //dt.ajax.reload();
+                        var arr = new Array();
+                        //var ids = "";
+                        /*
+                        $.each(["aaa","bbb","ccc"],function(index,value){
+                           alert(i+"..."+value);
+                          });
+                          结果是输出  0...aaa   1...bbb   2...ccc
+                        */
+                        $("input:checkbox[name=goodsId]:checked").each(function (key, value) {
+                            arr[key] = $(value).val();
+                            //ids += ","+value;
+                        });
+                        //alert(ids);
+                        //alert("所有选中的商品ID:"+arr.join(","));
+                        if(arr.length == 0){
+                            alert("请选择需要删除的商品!");
+                        }else{
+                            /* 封装请求参数 */
+                            var param = {};
+                            param.goodsIds = arr;
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/goods/delete",
+                                contentType: "application/json; charset=utf-8",
+                                cache: false,
+                                data: JSON.stringify(param),
+                                dataType: "json",
+                                success: function (result) {
+                                    if(result.code != "200"){
+                                        alert(result.msg);
+                                    }else{
+                                        alert("删除成功");
+                                        dt.ajax.reload(null,false);
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                },
+                {
+                    text: '新增',
+                    action: function ( e, dt, node, config ) {
+                        //dt.ajax.reload();
+                        //重置表单，清除修改获得的数据
+                        $("#goodsFrm")[0].reset();
+
+                        $("#myModalLabel").text("添加商品");
+                        //清空id，防止和修改获取的id冲突，因为添加数据库自动生成id
+                        $("#goodsIdx").val("");
+                        $("#myModal").modal("show");
+                    }
+                },
+            ],
+
+            language:lang,  //提示信息
+            autoWidth: false,  //禁用自动调整列宽
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: true,  //隐藏加载提示,自行处理
+            serverSide: true,  //启用服务器端分页
+            searching: true,  //禁用原生搜索
+            orderMulti: false,  //启用多列排序
+            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "simple_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            /*columnDefs: [{
+                "targets": 'nosort',  //列的样式名
+                "orderable": false    //包含上样式名‘nosort’的禁止排序
+            }],*/
+            //渲染
+            columnDefs: [
+                {
+                    "render": function ( data, type, row ) {
+                        return "<input type='checkbox' name='goodsId' value='" + data + "'>"+data;
+                    },
+                    "targets": 0 //指定渲染列：第一列(渲染第一列为单选框，data自动匹配为  {"data":"id"}中数据）
+                },
+
+                {
+                    "render": function ( data, type, row , meta) {
+                        return "<button type=\"button\" class=\"btn btn-block btn-default\" onclick='goodsModify("+meta.row+")'>修改</button>";
+                    },
+                    "targets": 6 //指定渲染列：第一列(渲染第一列为单选框，data自动匹配为  {"data":"id"}中数据）
+                },
+                {
+                    "render": function ( data, type, row , meta) {
+                        return "<button type=\"button\" class=\"btn btn-block btn-default\" onclick='goodsOutStock("+meta.row+")'>商品下架</button>";
+                    },
+                    "targets": 7 //指定渲染列：第一列(渲染第一列为单选框，data自动匹配为  {"data":"id"}中数据）
+                },
+
+                {
+                    "targets": 'nosort',  //列的样式名
+                    "orderable": false    //包含上样式名‘nosort’的禁止排序
+                }],
+
+            ajax: function (data, callback, settings) {
+                //封装请求参数
+                //debugger;
+                var param = {};
+                param.pageSize = data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                param.start = data.start;//开始的记录序号
+                param.pageNum = (data.start / data.length)+1;//当前页码
+
+                //商品搜索
+                if(data.search.value != "") {
+                    param.search = data.search.value;
+                }
+
+                //数据排序
+                if(data.order.length > 0 ){
+                    param.order = data.order[0].column;
+                    param.dir = data.order[0].dir;
+                }
+
+                //console.log(param);
+                //ajax请求数据
+                $.ajax({
+                    type: "POST",
+                    url: "/goods/list",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,  //禁用缓存
+                    data: JSON.stringify(param),  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        if(result.code != "200"){
+                            alert(result.msg);
+                        }else{
+                            //console.log(result);
+                            //setTimeout仅为测试延迟效果
+                            setTimeout(function () {
+                                //封装返回数据
+                                var returnData = {};
+                                returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
+                                returnData.recordsTotal = result.data.totalRecord;//返回数据全部记录
+                                returnData.recordsFiltered = result.data.totalRecord;//后台不实现过滤功能，每次查询均视作全部结果
+                                if (result.data.totalRecord == 0) {  //解决空数据时卡顿
+                                    returnData.data = "";    //返回的数据列表
+                                }else {
+                                    returnData.data = result.data.data;//返回的数据列表
+                                }
+                                //console.log(returnData);
+                                //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                                //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                                callback(returnData);
+                            }, 200);
+                        }
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                { "data": "id" },
+                { "data": "pName" },
+                { "data": "pPrice" },
+                { "data": "pStock" },
+                { "data": "pDetail" },
+                { "data": "pStatus" },
+                { "data": "id" },
+                { "data": "id" }
+            ]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    });
+    function goodsModify(index){
+        //获取datatables对象
+        var table = $("#example1").dataTable();
+        //获取datatables表格数据
+        var nodes = table.fnGetNodes();
+        //获取datatables表格指定行数据
+        var rows = table.fnGetData(nodes[index]);
+        $("#myModalLabel").text("修改商品信息");
+        $("#goodsIdx").val(rows.id);
+        $("#pName").val(rows.pName);
+        $("#pPrice").val(rows.pPrice);
+        $("#pStock").val(rows.pStock);
+        $("#pDetail").val(rows.pDetail);
+        $("#pStatus").val(rows.pStatus);
+
+        //$("#file_id").val($("#file_id").val());
+        $("#myModal").modal("show");
+    }
+    $(document).ready(function () {
+        $('#goodsSub').click(function () {
+            var url = "/goods/add";//默认新增
+            var id = $("#goodsIdx").val();
+            if(id !=""){
+                url = "/goods/modify";
+            }
+
+            //debugger;
+            var data = $('#goodsFrm').serializeJSON();
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function (result) {
+                    if(result.code != "200"){
+                        alert(result.msg);
+                    }else {
+                        alert("恭喜你,操作成功!");
+                        uploadFiles = [];
+                        $("#myModal").modal("hide");
+                        //操作成功后刷新
+                        //因为在另外一个方法体内，所以要重新获取DataTable
+                        //刷新数据
+                        var table = $('#example1').DataTable();
+                        table.ajax.reload(null, false );
+                    }
+                }
+            });
+        })
+
+    })
+
+    /*商品下架*/
+    function goodsOutStock(index){
+        //获取datatables对象
+        var table = $("#example1").dataTable();
+        //获取datatables表格数据
+        var nodes = table.fnGetNodes();
+        //获取datatables表格指定行数据
+        var rows = table.fnGetData(nodes[index]);
+        $("#goodsIdx").val(rows.id);
+        $("#pName").val(rows.pName);
+        $("#pPrice").val(rows.pPrice);
+        $("#pStock").val(rows.pStock);
+        $("#pDetail").val(rows.pDetail);
+
+        var goodsIdx=$("#goodsIdx").val();
+        var pName=$("#pName").val();
+        var pPrice=$("#pPrice").val();
+        var pStock=$("#pStock").val();
+        var pDetail=$("#pDetail").val();
+        if(confirm("确定下架?")){
+            //点击确定后操作
+            $(document).ready(function () {
+
+                var data = { pStatus:0,goodsIdx:goodsIdx,pName:pName,pPrice:pPrice,pStock:pStock,pDetail:pDetail};
+                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        url: "/goods/modify",
+                        contentType: "application/json; charset=utf-8",
+                        cache: false,
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        success: function (result) {
+                            if(result.code != "200"){
+                                alert(result.msg);
+                            }else {
+                                alert("恭喜你,操作成功!");
+                                uploadFiles = [];
+                                $("#myModal").modal("hide");
+                                //操作成功后刷新
+                                //因为在另外一个方法体内，所以要重新获取DataTable
+                                //刷新数据
+                                var table = $('#example1').DataTable();
+                                table.ajax.reload(null, false );
+                            }
+                        }
+                    });
+
+            })
+
+        }else{
+            alert("123");
+        }
+    }
+
+
+
+    /* 已经上传的图片列表 */
+
+    var uploadFiles = new Array();
+    //用户点击删除后，删除数组中的图片路径
+    function delValInArr(value,array){
+        //获得value在数组array中的下标位置
+        var pos=$.inArray(value,array);
+        //获得要删除数在pos中的位置，然后splice删除数组中这个位置的一个数
+        array.splice(pos,1);
+    }
+
+    Dropzone.autoDiscover = false;
+        var appElement = document.querySelector('div .inmodal');
+        $(document).ready(function () {
+        var myDropzone = new Dropzone("#dropz", {
+            url: "/upload/image",//文件提交地址
+            method:"post",  //也可用put
+            paramName:"file", //默认为file
+            maxFiles:1,//一次性上传的文件数量上限
+            maxFilesize: 2, //文件大小，单位：MB
+            acceptedFiles: ".jpg,.gif,.png,.jpeg", //上传的类型
+            addRemoveLinks:true,
+            //uploadMultiple: true,
+            parallelUploads: 1,//一次上传的文件数量
+            //autoProcessQueue: false,//不自动上传
+            //previewsContainer:"#preview",//上传图片的预览窗口
+            dictDefaultMessage:'拖动文件至此或者点击上传',
+            dictMaxFilesExceeded: "您最多只能上传1个文件！",
+            dictResponseError: '文件上传失败!',
+            dictInvalidFileType: "文件类型只能是*.jpg,*.gif,*.png,*.jpeg。",
+            dictFallbackMessage:"浏览器不受支持",
+            dictFileTooBig:"文件过大上传文件最大支持.",
+            dictRemoveLinks: "删除",
+            dictCancelUpload: "取消",
+            init:function(){
+
+                this.on("addedfile", function(file) {
+                    //上传文件时触发的事件
+                    document.querySelector('div .dz-default').style.display = 'none';
+
+
+                });
+                this.on("success",function(file,data){
+                    //上传成功触发的事件
+                    console.log('ok');
+
+                    //angular.element(appElement).scope().file_id = data.data.id;
+                    $("#file_id").val(data.name);    //文件名(上传路径)
+                    uploadFiles.push(data.name);
+
+                    alert(uploadFiles);
+
+                });
+                this.on("error",function (file,data) {
+                    //上传失败触发的事件
+                    console.log('fail');
+                    var message = '';
+                    //lavarel框架有一个表单验证，
+                    //对于ajax请求，JSON 响应会发送一个 422 HTTP 状态码，
+                    //对应file.accepted的值是false，在这里捕捉表单验证的错误提示
+                    if (file.accepted){
+                        $.each(data,function (key,val) {
+                            message = message + val[0] + ';';
+                        })
+                        //控制器层面的错误提示，file.accepted = true的时候；
+                        alert(message);
+                    }
+                });
+                this.on("removedfile",function(file){
+                    //删除文件时触发的方法
+                    //var name ={name: file.name};
+
+                    //var file_id = angular.element(appElement).scope().file_id;
+                    var file_id=$("#file_id").val();
+                    var data = {name:file_id};
+                    if (file_id){
+                        $.ajax({
+                            type: 'POST',
+                            url: '../upload/delete',
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(data),
+                            dataType: 'html',
+
+                            success: function(data){
+                                var state = JSON.parse(data);
+                                if(state.data == 1)
+                                {
+                                    alert("删除成功");
+                                    delValInArr(data.name,uploadFiles);
+                                }else{
+                                    alert("删除失败");
+                                }
+
+                            }
+                        });
+                        /*$.post('/upload/delect/'+ file_id,{'_method':'DELETE'},function (data) {
+                            console.log('删除结果:'+data.message);
+                            delValInArr(data.name,uploadFiles);
+                        })*/
+                    }
+                    angular.element(appElement).scope().file_id = 0;
+                    document.querySelector('div .dz-default').style.display = 'block';
+                });
+            }
+        });
+    })
+    $("#pi_3")
+        .click(function () {
+
+            //alert('登录成功!');
+            window.location.href = "/static/GFshelves.html";
+
+        });
+</script>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">新增商品</h4>
+      </div>
+      <div class="modal-body">
+        <form id="goodsFrm">
+          <div class="form-group has-feedback">
+            <input id="pName" name="pName" type="input" class="form-control" placeholder="商品名称">
+          </div>
+          <div class="form-group has-feedback">
+            <input id="pPrice" name="pPrice" type="input" class="form-control" placeholder="商品价格">
+          </div>
+          <div class="form-group has-feedback">
+            <input id="pStock" name="pStock" type="input" class="form-control" placeholder="商品库存">
+          </div>
+          <div class="form-group has-feedback">
+            <input id="pDetail" name="pDetail" type="input" class="form-control" placeholder="商品描述">
+          </div>
+          <div class="form-group has-feedback">
+            <input id="pStatus" name="pStatus" type="hidden" class="form-control" placeholder="商品状态" readonly="true">
+          </div>
+          <div class="form-group has-feedback">
+            <input type="hidden" id="file_id" name="pMainImage" value="" />
+          </div>
+            <div class="form-group">
+              <label class="title">真人照(最多只能传一张)</label>
+              <div id="dropz" class="dropzone"></div>
+            </div>
+          <input id="goodsIdx" name="goodsIdx" type="hidden" class="form-control" placeholder="商品ID">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button id="goodsSub" type="button" class="btn btn-primary">提交更改</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
+</html>

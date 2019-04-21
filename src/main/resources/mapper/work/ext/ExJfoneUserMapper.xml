@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.ext.ExJfoneUserMapper" >
+  <resultMap id="baseMap" type="com.jfone.mall.base.entity.work.ext.ExJfoneUser"
+             extends="com.jfone.mall.base.mapping.work.JfoneUserMapper.BaseResultMap">
+
+  </resultMap>
+
+
+
+</mapper>

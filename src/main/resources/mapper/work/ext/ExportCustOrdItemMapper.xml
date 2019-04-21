@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.ext.ExportCustOrdItemMapper" >
+
+
+  <select id="getexport" resultType="com.jfone.mall.base.entity.work.ext.ExportCustOrdItem">
+SELECT jord.o_order_no orderNo,jcou.c_nickname cNickName,jpro.p_name pName,jordit.oi_current_unit_price totalPrice,
+jordit.oi_quantity quantity,jord.o_payment payMent,jpro.p_stock Stock,jord.o_create_time createTime,jord.o_update_time updateTime FROM jfone_order jord
+INNER JOIN
+jfone_order_item jordit ON
+jord.o_order_no=jordit.`oi_order_no`
+INNER JOIN
+jfone_coustomer jcou  ON
+jcou.id=jord.o_user_id
+INNER JOIN
+jfone_product jpro ON
+jordit.oi_product_id = jpro.id
+
+  </select>
+</mapper>

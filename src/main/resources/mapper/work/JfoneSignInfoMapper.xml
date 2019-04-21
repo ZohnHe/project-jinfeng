@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.JfoneSignInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jfone.mall.base.entity.work.JfoneSignInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="s_description" property="sDescription" jdbcType="VARCHAR" />
+    <result column="s_error_remark" property="sErrorRemark" jdbcType="VARCHAR" />
+    <result column="s_sign_name" property="sSignName" jdbcType="VARCHAR" />
+    <result column="s_sign_time" property="sSignTime" jdbcType="DATE" />
+    <result column="s_sign_type" property="sSignType" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

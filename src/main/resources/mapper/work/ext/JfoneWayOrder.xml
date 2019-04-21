@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jfone.mall.base.mapping.work.ext.JfoneWayOrderMapper" >
+<select id="listByOrderId" parameterType="Long" resultType="com.jfone.mall.base.entity.work.ext.JfoneWayOrder">
+    select
+        c.c_username username,s.s_receiver_mobile mobile ,s.s_receiver_province province,s.s_receiver_city city,s.s_receiver_district district,s.s_receiver_address address,
+        t.oi_product_name productName,t.oi_product_image productImage,t.oi_current_unit_price unitPrice,t.oi_quantity quantity ,t.oi_total_price totalPrice
+    from
+      jfone_order o,jfone_shipping s,jfone_coustomer c,jfone_order_item t
+    where
+      s.id=(select o_shipping_id from jfone_order where o_order_no=#{orderId})
+      and c.id=(select o_user_id from jfone_order where o_order_no=#{orderId})
+      and o.o_order_no=#{orderId} and t.oi_order_no=o.o_order_no;
+</select>
+<!--select o.o_order_no,c.c_username,s.s_receiver_mobile,s.s_receiver_province,s.s_receiver_city,s.s_receiver_district,s.s_receiver_address,
+        t.oi_product_name,t.oi_product_image,t.oi_current_unit_price,t.oi_quantity,t.oi_total_price
+        from jfone_order o,jfone_shipping s,jfone_coustomer c,jfone_order_item t where s.id=(select o_shipping_id from jfone_order where o_order_no='9695291694')
+        and c.id=(select o_user_id from jfone_order where o_order_no='9695291694'
+        ) and o.o_order_no='9695291694' and t.oi_order_no=o.o_order_no;-->
+</mapper>
